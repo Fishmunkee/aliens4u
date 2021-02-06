@@ -1,0 +1,2 @@
+class Alien < ApplicationRecord
+end
