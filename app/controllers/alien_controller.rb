@@ -28,6 +28,8 @@ class AlienController < ApplicationController
 
   def show
     @alien = Alien.find(params[:id])
+    @bookings = Booking.where("alien_id = '#{@alien.id}'")
+    #todo get average of ratings from booking if bookings exist
   end
 
   def destroy
