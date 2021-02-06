@@ -4,11 +4,16 @@
 $alien: #32e0c4;
 $dark: #212121;
 
+.welcome_title {
+  justify-content: center;
+}
+
 .welcome_title h1 {
-  color: $green;
-  justify-text: center;
+  color: $alien;
+  margin: 20px;
 }
 
 .welcome_title h2 {
   color: $dark;
+  margin: 20px;
 }
