@@ -1,2 +1,0 @@
-class Alien < ApplicationRecord
-end
