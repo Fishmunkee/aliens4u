@@ -4,16 +4,44 @@
 $alien: #32e0c4;
 $dark: #212121;
 
-.welcome_title {
-  justify-content: center;
+body {
+  background-image: url('aliens4u.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.title_and_searchbar {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
 }
 
 .welcome_title h1 {
+  padding-top: 100px;
   color: $alien;
+  text-shadow: 2px 2px 25px violet;
+
   margin: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 70px;
 }
 
 .welcome_title h2 {
-  color: $dark;
+  color: $alien;
   margin: 20px;
+  font-family: 'Space Mono', monospace;
+  font-weight: regular;
+  // font-style: italic;
+
+}
+
+.btn.btn-outline-secondary {
+  background-color: $dark;
+  color: #eeeeee;
+  font-family: 'Big Shoulders Display', cursive;
+  font-weight: 400;
+  letter-spacing: 2px;
 }
