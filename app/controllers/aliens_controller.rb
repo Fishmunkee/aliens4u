@@ -49,9 +49,7 @@ class AliensController < ApplicationController
     end
     # @bookings = Booking.where("alien_id = '#{@alien.id}'")
     #todo get average of ratings from booking if bookings exist
-    # @booking = Booking.new
-    #where the form is for the booking
-    # @booking = Booking.new
+    @booking = Booking.new
     #where the form is for the booking
   end
 
