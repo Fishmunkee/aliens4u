@@ -4,7 +4,7 @@ class AlienController < ApplicationController
   end
 
   def search
-    @aliens = Alien.where("name like #{params[:q]}")
+    @aliens = Alien.where("name LIKE ?", "%#{params[:q]}%")
   end
 
   def new
@@ -36,9 +36,11 @@ class AlienController < ApplicationController
 
   def show
     @alien = Alien.find(params[:id])
-    @bookings = Booking.where("alien_id = '#{@alien.id}'")
-    average = bookings.sum(&:rating) / bookings.length
-    @alien.rating = average
+    @bookings = Booking.where("alien_id = ?", "'#{@alien.id}'")
+    if @bookings.length > 0
+      average = bookings.sum(&:rating) / bookings.length
+      @alien.rating = average
+    end
   end
 
   def destroy

@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Seeding user'
+@user = User.new
+@user.email = "test1@test.com"
+@user.password = "fohdsobnfdaivn"
+@user.save!
+
+puts 'Seeding aliens'
+
+Alien.create(name: 'Jar Jar Binks', species: 'Gungan', planet: 'Naboo', user: @user)
+puts 'Finished seeding'
