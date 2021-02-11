@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Your Bookings</h1>
+  <div class="cards">
+    <div class="card">
+      <% @booking.user.each do |booking| %>
+        <p>Start Date: <%= @booking.alien_id %></p>
+         <%= @booking.appointment_start_date %>
+         <% end %>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
