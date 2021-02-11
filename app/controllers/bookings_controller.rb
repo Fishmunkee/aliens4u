@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
-    redirect_to bookings index path?
+    redirect_to booking_path(@booking)
   end
 
   def destroy
