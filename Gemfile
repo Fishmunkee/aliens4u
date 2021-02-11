@@ -25,6 +25,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#gem for security on secret keys
+gem 'dotenv-rails', groups: [:development, :test]
+
+#gem for cloudinary
+gem 'cloudinary', '~> 1.16.0'
+
 #gem to create sign up forms
 gem 'devise'
 
