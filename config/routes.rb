@@ -7,6 +7,6 @@ Rails.application.routes.draw do
       get 'search'
     end
     resources :bookings, only: [:new, :create]
-    end
-    resources :bookings, only: [:show, :edit, :update, :destroy]
+  end
+  resources :bookings, only: [:show, :edit, :update, :destroy]
 end
