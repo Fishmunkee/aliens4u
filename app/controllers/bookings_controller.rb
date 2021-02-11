@@ -4,6 +4,10 @@ class BookingsController < ApplicationController
     @alien = Alien.find(params[:alien_id])
   end
 
+  def index
+    @bookings = Booking.all
+  end
+
   def create
     @alien = Alien.find(params[:alien_id])
     @booking = Booking.new(booking_params)
