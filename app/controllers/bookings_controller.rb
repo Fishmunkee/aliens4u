@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy]
   def new
+    @booking = Booking.new
     @alien = Alien.find(params[:alien_id])
   end
 
@@ -19,7 +20,7 @@ class BookingsController < ApplicationController
       render :new
     end
   end
-  
+
   def show; end
 
   def edit; end
@@ -34,9 +35,9 @@ class BookingsController < ApplicationController
   end
 
   private
-  
+
   def find_booking
-    @booking = Booking.find(params[:id])    
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params
