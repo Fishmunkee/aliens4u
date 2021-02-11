@@ -3,15 +3,23 @@ class AlienController < ApplicationController
     @aliens = Alien.all
   end
 
+  def search
+    @aliens = Alien.where("name like #{params[:q]}")
+  end
+
   def new
     @alien = Alien.new
   end
 
   def create
     @alien = Alien.new(alien_params)
-    @alien.save
+    @alien.user = current_user
 
-    redirect_to alien_path(@alien)
+    if @alien.save
+      redirect_to @alien, notice: 'Alien was successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,12 +37,13 @@ class AlienController < ApplicationController
   def show
     @alien = Alien.find(params[:id])
     @bookings = Booking.where("alien_id = '#{@alien.id}'")
-    #todo get average of ratings from booking if bookings exist
+    average = bookings.sum(&:rating) / bookings.length
+    @alien.rating = average
   end
 
   def destroy
-    @alien = Alien.find(params[:id])
     @alien.destroy
+    redirect_to aliens_path, notice: 'Alien was destroyed.'
   end
 
   private
