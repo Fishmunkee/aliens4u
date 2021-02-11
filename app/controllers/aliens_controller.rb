@@ -1,4 +1,4 @@
-class AlienController < ApplicationController
+class AliensController < ApplicationController
   def index
     @aliens = Alien.all
   end
@@ -15,11 +15,17 @@ class AlienController < ApplicationController
     @alien = Alien.new(alien_params)
     @alien.user = current_user
 
+    # @alien.save
+
+    # redirect_to aliens_path(@alien)
+
+
     if @alien.save
       redirect_to @alien, notice: 'Alien was successfully created.'
     else
       render :new
     end
+
   end
 
   def edit
@@ -36,14 +42,14 @@ class AlienController < ApplicationController
 
   def show
     @alien = Alien.find(params[:id])
-    @bookings = Booking.where("alien_id = ?", "'#{@alien.id}'")
+    @bookings = Booking.where("alien_id = ?", "#{@alien.id}")
     if @bookings.length > 0
       average = bookings.sum(&:rating) / bookings.length
       @alien.rating = average
     end
-    @bookings = Booking.where("alien_id = '#{@alien.id}'")
+    # @bookings = Booking.where("alien_id = '#{@alien.id}'")
     #todo get average of ratings from booking if bookings exist
-    @booking = Booking.new
+    # @booking = Booking.new
     #where the form is for the booking
     # @booking = Booking.new
     #where the form is for the booking
@@ -57,6 +63,6 @@ class AlienController < ApplicationController
   private
 
   def alien_params
-    params.require(:alien).permit(:name, :species, :planet)
+    params.require(:alien).permit(:name, :species, :planet, :user)
   end
 end
