@@ -9,9 +9,10 @@ class AliensController < ApplicationController
 
   def create
     @alien = Alien.new(alien_params)
+    @alien.user = current_user
     @alien.save
 
-    redirect_to alien_path(@alien)
+    redirect_to aliens_path(@alien)
   end
 
   def edit

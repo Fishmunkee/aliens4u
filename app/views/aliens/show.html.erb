@@ -1,0 +1,9 @@
+
+<div class="container-show">
+  <h2><%= @alien.name %></h2>
+  <h3><%= @alien.species %></h3>
+  <h3> <%= @alien.planet %></h3>
+  <%= image_tag "alien.png", alt: "Placeholder image", height: 300, width: 300, crop: :fit  %>
+</div>
+
+<%=  link_to "Back to Aliens", aliens_path %>
