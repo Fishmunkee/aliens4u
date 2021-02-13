@@ -6,7 +6,10 @@
     </div>
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Feeling like a Mr Meeseeks?" aria-label="" aria-describedby="button-addon2">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search the Galaxy <i class="fas fa-space-shuttle"></i></button>
+      <%= link_to aliens_path do %>
+        <p class="btn btn-outline-secondary" id="button-addon2">Search the Galaxy </p>
+        <i class="fas fa-space-shuttle">
+      <% end %>
     </div>
   </div>
 </div>
