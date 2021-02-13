@@ -14,12 +14,6 @@ class AliensController < ApplicationController
   def create
     @alien = Alien.new(alien_params)
     @alien.user = current_user
-
-    # @alien.save
-
-    # redirect_to aliens_path(@alien)
-
-
     if @alien.save
       redirect_to @alien, notice: 'Alien was successfully created.'
     else
@@ -43,17 +37,14 @@ class AliensController < ApplicationController
   def show
     @alien = Alien.find(params[:id])
     @bookings = Booking.where("alien_id = ?", "#{@alien.id}")
-    if @bookings.length > 0
+    if !@bookings.nil? && @bookings.size > 0
       average = bookings.sum(&:rating) / bookings.length
       @alien.rating = average
     end
-    # @bookings = Booking.where("alien_id = '#{@alien.id}'")
-    #todo get average of ratings from booking if bookings exist
-    @booking = Booking.new
-    #where the form is for the booking
   end
 
   def destroy
+    @alien = Alien.find(params[:id])
     @alien.destroy
     redirect_to aliens_path, notice: 'Alien was destroyed.'
   end

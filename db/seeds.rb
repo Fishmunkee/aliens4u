@@ -6,10 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'Seeding user'
-@user = User.new
-@user.email = "test1@test.com"
-@user.password = "fohdsobnfdaivn"
-@user.save!
+@user = User.find("1")
+if @user.nil?
+  @user = User.new
+  @user.email = "test1@test.com"
+  @user.password = "fohdsobnfdaivn"
+  @user.save!
+end
 
 puts 'Seeding aliens'
 
