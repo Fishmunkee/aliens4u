@@ -1,12 +1,11 @@
-
 <div class="container-index">
   <div class= "cards">
     <% @bookings.each do |booking| %>
       <%= link_to booking_path(booking) do %>
         <div class="card">
-          <h3><%= booking.appointment_start_date.strftime("%Y-%m-%d") %></h3>
-          <h3><%= booking.appointment_end_date.strftime("%Y-%m-%d") %></h3>
-          <h3><%= booking.created_at.strftime("%Y-%m-%d") %></h3>
+          <h3><%= "Start date: #{booking.appointment_start_date.strftime("%Y-%m-%d")}" %></h3>
+          <h3><%= "End date: #{booking.appointment_end_date.strftime("%Y-%m-%d")}" %></h3>
+          <h3><%= "Created: #{booking.created_at.strftime("%Y-%m-%d")}" %></h3>
           <%= link_to "Delete", booking_path(booking), 
             method: :delete, 
             data: { confirm: "Are you sure?" }%>
