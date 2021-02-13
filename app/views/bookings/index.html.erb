@@ -5,7 +5,7 @@
         <div class="card">
           <h3><%= booking.appointment_start_date.strftime("%Y-%m-%d") %></h3>
           <h3><%= booking.appointment_end_date.strftime("%Y-%m-%d") %></h3>
-          <h3><%= booking.date_posted.strftime("%Y-%m-%d") %></h3>
+          <h3><%= booking.created_at.strftime("%Y-%m-%d") %></h3>
           <%= link_to "Delete", booking_path(booking), 
             method: :delete, 
             data: { confirm: "Are you sure?" }%>
