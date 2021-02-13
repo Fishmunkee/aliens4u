@@ -4,7 +4,8 @@ class AliensController < ApplicationController
   end
 
   def search
-    @aliens = Alien.where("name LIKE ?", "%#{params[:q]}%")
+    puts "I'm working"
+    @aliens = Alien.where("name ILIKE ?", "%#{params[:q]}%")
   end
 
   def new
