@@ -1,0 +1,9 @@
+<%= simple_form_for [@alien, @booking] do |f| %>
+  <%= f.input :appointment_start_date, as: :date, html5: true %>
+  <%= f.input :appointment_end_date, as: :date, html5: true %>
+  <%#= f.input :date_posted, as: :date, html5: true %>
+  <!-- date posted should be automatic -->
+  <%#= f.input :rating, collection: 1..5%>
+  <%= f.submit %>
+<% end %>
+

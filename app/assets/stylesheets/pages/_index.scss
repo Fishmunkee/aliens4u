@@ -1,11 +1,11 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "bookings/index";
+@import "registrations/index";
 
-$alien: #32e0c4;
-$dark: #212121;
 
 body {
-  background-image: url('aliens4u.jpg');
+  background-image: image-url('aliens4u.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }

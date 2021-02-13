@@ -1,4 +1,4 @@
-class AlienController < ApplicationController
+class AliensController < ApplicationController
   def index
     @aliens = Alien.all
   end
@@ -15,11 +15,17 @@ class AlienController < ApplicationController
     @alien = Alien.new(alien_params)
     @alien.user = current_user
 
+    # @alien.save
+
+    # redirect_to aliens_path(@alien)
+
+
     if @alien.save
       redirect_to @alien, notice: 'Alien was successfully created.'
     else
       render :new
     end
+
   end
 
   def edit
@@ -51,6 +57,6 @@ class AlienController < ApplicationController
   private
 
   def alien_params
-    params.require(:alien).permit(:name, :species, :planet)
+    params.require(:alien).permit(:name, :species, :planet, :user)
   end
 end
