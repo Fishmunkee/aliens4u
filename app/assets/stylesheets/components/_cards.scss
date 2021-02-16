@@ -18,10 +18,54 @@
 //   border-radius: 3px;
 // }
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 50px;
+}
+
 .card {
   display: flex;
-  flex-direction: column;
-  width: 300px;
-  font-size: 10px;
+  align-content: flex-end;
+  color: $alien;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 2px 2px 25px violet;
+  height: 250px;
+  background: rgba(50, 50, 50, .5);
+  padding: .5rem;
+  border: 2px solid #eeeeee;
 
 }
+
+h3 {
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 27px;
+  color: $alien;
+}
+
+p {
+  font-family: 'Space Mono', monospace;
+  font-size: 18px;
+  color: #eeeeee;
+}
+
+a {
+  color: #eeeeee;
+}
+
+a:hover {
+  color: #eeeeee;
+  text-shadow: 2px 2px 25px violet;
+  text-decoration: none;
+
+}
+
+// .card {
+//   display: flex;
+//   flex-direction: column;
+//   width: 300px;
+//   font-size: 10px;
+
+// }
