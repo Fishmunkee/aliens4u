@@ -53,6 +53,6 @@ class AliensController < ApplicationController
   private
 
   def alien_params
-    params.require(:alien).permit(:name, :species, :planet, :user)
+    params.require(:alien).permit(:name, :species, :planet, :user, :photo)
   end
 end
