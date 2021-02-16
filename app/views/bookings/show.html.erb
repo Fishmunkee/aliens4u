@@ -1,11 +1,13 @@
 <div class="container">
-  <h1>Your Bookings</h1>
+  <h1>Your new booking</h1>
   <div class="cards">
     <div class="card">
         <p>Start Date: <%= @booking.appointment_start_date %></p>
-         <%=  %>
+         <%= link_to "Cancel booking", booking_path(@booking),
+         method: :delete,
+         data: { confirm: "Are you sure?" }%>
     </div>
   </div>
 </div>
 
-
+<%= link_to "Back to Bookings", bookings_path %>
