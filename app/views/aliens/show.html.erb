@@ -2,7 +2,7 @@
 <div class="container-show">
   <h3><%= @alien.species %></h3>
   <h3> <%= @alien.planet %></h3>
-  <%= image_tag "alien.png", alt: "Placeholder image", height: 300, width: 300, crop: :fit  %>
+  <%= cl_image_tag @alien.photo.key, height: 300, width: 300, crop: :fit  %>
   <br>
   <%= link_to "Remove Alien",
                   alien_path(@alien),
