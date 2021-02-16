@@ -1,1 +1,11 @@
+<%= simple_form_for(@alien) do |f| %>
+  <%= f.text_field :name %>
 
+  <%= f.text_field :species %>
+
+  <%= f.text_field :planet %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back", alien_path(@alien.id) %>

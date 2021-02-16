@@ -1,5 +1,6 @@
 
 <div class="container-show">
+  <h2><%= @alien.name %></h2>
   <h3><%= @alien.species %></h3>
   <h3> <%= @alien.planet %></h3>
   <% if @alien.photo.attached? %>
@@ -14,6 +15,8 @@
                   data: { confirm: "Are you sure?" } %>
 
 </div>
+
+<%= link_to "Edit", edit_alien_path(@alien) %>
 
 <hr>
 

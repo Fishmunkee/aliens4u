@@ -28,6 +28,8 @@ class AliensController < ApplicationController
   end
 
   def update
+
+    @alien = Alien.find(params[:id])
     if @alien.update_attributes(alien_params)
       redirect_to alien_path(@alien)
     else
