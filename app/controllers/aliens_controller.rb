@@ -39,7 +39,7 @@ class AliensController < ApplicationController
     @alien = Alien.find(params[:id])
     @bookings = Booking.where("alien_id = ?", "#{@alien.id}")
     if !@bookings.nil? && @bookings.size > 0
-      average = bookings.sum(&:rating) / bookings.length
+      average = @bookings.sum(&:rating) / @bookings.length
       @alien.rating = average
     end
   end
