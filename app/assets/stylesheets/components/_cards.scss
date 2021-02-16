@@ -1,19 +1,27 @@
-.cards{
-  align-items: center;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
-  padding: 10px;
-}
+// .cards{
+//   align-items: center;
+//   margin: auto;
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   grid-gap: 30px;
+//   padding: 10px;
+// }
 
-.card{
+// .card{
+//   display: flex;
+//   flex-direction: column-reverse;
+//   background-color: #212121;
+//   align-items: center;
+//   width: 200px;
+//   height: 300px;
+//   padding: 10px;
+//   border-radius: 3px;
+// }
+
+.card {
   display: flex;
-  flex-direction: column-reverse;
-  background-color: #212121;
-  align-items: center;
-  width: 200px;
-  height: 300px;
-  padding: 10px;
-  border-radius: 3px;
+  flex-direction: column;
+  width: 300px;
+  font-size: 10px;
+
 }

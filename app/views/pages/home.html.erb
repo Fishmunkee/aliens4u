@@ -4,9 +4,16 @@
       <h1>Aliens4U</h1>
       <h2>Aliens... like you've never known before</h2>
     </div>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Feeling like a Mr Meeseeks?" aria-label="" aria-describedby="button-addon2">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search the Galaxy <i class="fas fa-space-shuttle"></i></button>
-    </div>
+      <%= form_with url: "/aliens/search", method: :get, local: true do |form| %>
+      <%= form.text_field :q %>
+      <%= form.submit 'Search' %>
+      <% end %>
   </div>
 </div>
+
+
+
+
+
+
+

@@ -32,6 +32,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    redirect_to bookings_path
   end
 
   private
@@ -41,6 +42,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:appointment_start_date, :appointment_end_date, :date_posted, :alien_id)
+    params.require(:booking).permit(:appointment_start_date, :appointment_end_date, :alien_id)
   end
 end

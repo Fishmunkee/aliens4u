@@ -4,7 +4,8 @@ class AliensController < ApplicationController
   end
 
   def search
-    @aliens = Alien.where("name LIKE ?", "%#{params[:q]}%")
+    puts "I'm working"
+    @aliens = Alien.where("name ILIKE ?", "%#{params[:q]}%")
   end
 
   def new
@@ -38,7 +39,7 @@ class AliensController < ApplicationController
     @alien = Alien.find(params[:id])
     @bookings = Booking.where("alien_id = ?", "#{@alien.id}")
     if !@bookings.nil? && @bookings.size > 0
-      average = bookings.sum(&:rating) / bookings.length
+      average = @bookings.sum(&:rating) / @bookings.length
       @alien.rating = average
     end
   end
@@ -52,6 +53,6 @@ class AliensController < ApplicationController
   private
 
   def alien_params
-    params.require(:alien).permit(:name, :species, :planet, :user)
+    params.require(:alien).permit(:name, :species, :planet, :user, :photo)
   end
 end
