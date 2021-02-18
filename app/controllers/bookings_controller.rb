@@ -24,7 +24,6 @@ class BookingsController < ApplicationController
       if startDate.between?(booking.appointment_start_date, booking.appointment_end_date) ||
         endDate.between?(booking.appointment_start_date, booking.appointment_end_date) ||
         (startDate < booking.appointment_start_date && endDate > booking.appointment_end_date)
-        puts "Alien is already booked"
         canBook = false
         break
       end
