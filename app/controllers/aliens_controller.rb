@@ -1,4 +1,5 @@
 class AliensController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   def index
     @aliens = Alien.all
   end

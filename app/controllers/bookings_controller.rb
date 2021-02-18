@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   def new
     @booking = Booking.new
     @alien = Alien.find(params[:alien_id])
