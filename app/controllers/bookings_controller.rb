@@ -27,8 +27,11 @@ class BookingsController < ApplicationController
   def edit; end
 
   def update
-    @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    if @booking.update(booking_params)
+      redirect_to booking_path(@booking)
+    else 
+      render action: :edit
+    end
   end
 
   def destroy

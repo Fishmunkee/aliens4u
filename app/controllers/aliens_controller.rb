@@ -31,10 +31,14 @@ class AliensController < ApplicationController
   def update
 
     @alien = Alien.find(params[:id])
-    if @alien.update_attributes(alien_params)
-      redirect_to alien_path(@alien)
+    if current_user == @alien.user
+      if @alien.update_attributes(alien_params)
+        redirect_to alien_path(@alien)
+      else
+        render action: :edit
+      end
     else
-      render action: :edit
+      redirect_to alien_path(@alien), notice: 'Cannot edit alien'
     end
   end
 
@@ -49,8 +53,12 @@ class AliensController < ApplicationController
 
   def destroy
     @alien = Alien.find(params[:id])
-    @alien.destroy
-    redirect_to aliens_path, notice: 'Alien was destroyed.'
+    if current_user == @alien.user
+      @alien.destroy
+      redirect_to aliens_path, notice: 'Alien was destroyed.'
+    else
+      redirect_to aliens_path, notice: 'Cannot delete alien.'
+    end
   end
 
   private
