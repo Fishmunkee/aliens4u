@@ -1,4 +1,6 @@
 class AliensController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @aliens = Alien.all
   end
