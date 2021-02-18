@@ -11,13 +11,37 @@ class BookingsController < ApplicationController
 
   def create
     @alien = Alien.find(params[:alien_id])
-    @booking = Booking.new(booking_params)
-    @booking.alien = @alien
-    @booking.user = current_user
-    if @booking.save
-      redirect_to booking_path(@booking)
+
+    #check for bookings
+    existingBookings = Booking.where("alien_id = ?", params[:alien_id])
+
+    canBook = true
+
+    startDate = params[:booking][:appointment_start_date]
+    endDate = params[:booking][:appointment_end_date]
+
+    for booking in existingBookings do
+      if startDate.between?(booking.appointment_start_date, booking.appointment_end_date) ||
+        endDate.between?(booking.appointment_start_date, booking.appointment_end_date) ||
+        (startDate < booking.appointment_start_date && endDate > booking.appointment_end_date)
+        puts "Alien is already booked"
+        canBook = false
+        break
+      end
+    end
+
+
+    if canBook
+      @booking = Booking.new(booking_params)
+      @booking.alien = @alien
+      @booking.user = current_user
+      if @booking.save
+        redirect_to booking_path(@booking)
+      else
+        redirect_to new_alien_booking_path(@alien)
+      end
     else
-      render :new
+      redirect_to new_alien_booking_path(@alien), notice: 'Alien is already booked'
     end
   end
 
