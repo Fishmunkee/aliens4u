@@ -16,13 +16,14 @@
             <% end %></li>
         </ul>
         <ul class ="list-crud ">
+          
+        <%= link_to_if current_user.id == @alien.user_id, "Remove Alien",
+                  alien_path(@alien),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+        </div>
 
-          <li><%= link_to "Edit", edit_alien_path(@alien) %></li>
-          <li><%= link_to "Book", new_alien_booking_path(@alien, @booking) %></li>
-          <li> <%= link_to "Remove Alien",
-                        alien_path(@alien),
-                        method: :delete,
-                        data: { confirm: "Are you sure?" } %></li>
+        <%= link_to_if current_user.id == @alien.user_id, "Edit", edit_alien_path(@alien) %>
         </ul>
       </div>
       <div class ="d-flex justify-content-center">
@@ -32,6 +33,7 @@
   </div>
 </div>
 
+ 
 
 
 
