@@ -3,10 +3,11 @@
     <% @bookings.each do |booking| %>
       <%= link_to booking_path(booking) do %>
         <div class="booking-card">
-          <h3><%= "Your booking for #{booking.alien.name}" %><i class="far fa-clock"></i></h3>
+          <h3><%= "Your booking for #{booking.alien.name}" %></h3>
           <h3><%= "Start date: #{booking.appointment_start_date.strftime("%d-%m-%Y")}" %></h3>
           <h3><%= "End date: #{booking.appointment_end_date.strftime("%d-%m-%Y")}" %></h3>
           <h3><%= "Created: #{booking.created_at.strftime("%d-%m-%Y")}" %></h3>
+          <i class="clock far fa-clock"></i>
 
         </div>
       <% end %>
