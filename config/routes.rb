@@ -8,5 +8,9 @@ Rails.application.routes.draw do
     end
     resources :bookings, only: [:new, :create]
     end
-    resources :bookings, only: [:index, :show, :edit, :update, :destroy]
+    resources :bookings, only: [:index, :show, :edit, :update, :destroy] do
+      collection do
+        post ':id/rating/:rating' => :rating, as: :rating
+      end
+    end
 end

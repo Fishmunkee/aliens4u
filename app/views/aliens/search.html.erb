@@ -8,6 +8,14 @@
         <p><%= alien.species %></p>
         <h3>Planet of Origin: </h3>
         <p><%= alien.planet %></p>
+        <h3>Rating:</h3>
+        <p><% alien.rating.to_i.times do  %>
+            <span class="fas fa-star"></span>
+          <% end %>
+          <% (5 - alien.rating.to_i).times do  %>
+            <span class="far fa-star"></span>
+          <% end %>
+          </p>
       </div>
     <% end %>
     <div class= "create-card">
