@@ -1,35 +1,50 @@
 
 <div class="container-show">
-  <h2><%= @alien.name %></h2>
-  <h3><%= @alien.species %></h3>
-  <h3> <%= @alien.planet %></h3>
-  <% if @alien.photo.attached? %>
-    <%= cl_image_tag @alien.photo.key, height: 300, width: 300, crop: :fit  %>
-    <% else %>
-    <%= image_tag "alien.png", alt: "Placeholder image", height: 300, width: 300, crop: :fit  %>
-    <% end %>
 
-    <p>Rating: <% @alien.rating.to_i.times do  %>
+  <div class="row justify-content-center">
+    <div class= "col-6">
+      <div class="card-show">
+        <ul class="list-inline">
+
+        <li><h2><%= @alien.name %></h2></li>
+        <li><h3><%= @alien.species %></h3></li>
+        <li><h3> <%= @alien.planet %></h3></li>
+
+          <li><% if @alien.photo.attached? %>
+            <%= cl_image_tag @alien.photo.key, height: 300, width: 300, crop: :fill %>
+            <% else %>
+            <%= image_tag "alien.png", alt: "Placeholder image", height: 300, width: 300, crop: :fill  %>
+            <% end %></li>
+
+    <ul><p>Rating: <% @alien.rating.to_i.times do  %>
       <span class="fas fa-star"></span>
     <% end %>
     <% (5 - @alien.rating.to_i).times do  %>
       <span class="far fa-star"></span>
     <% end %>
     </p>
-  <br>
-  <%= link_to_if current_user.id == @alien.user_id, "Remove Alien",
+  </ul>
+
+        </ul>
+        <ul class ="list-crud ">
+
+        <%= link_to_if current_user.id == @alien.user_id, "Remove Alien",
                   alien_path(@alien),
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
+        </div>
 
-
-
+        <%= link_to_if current_user.id == @alien.user_id, "Edit", edit_alien_path(@alien) %>
+        </ul>
+      </div>
+      <div class ="d-flex justify-content-center">
+        <%=  link_to "Back to Aliens", aliens_path %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to_if current_user.id == @alien.user_id, "Edit", edit_alien_path(@alien) %>
 
-<hr>
 
-<%=  link_to "Back to Aliens", aliens_path %>
-<p><%= link_to "Book", new_alien_booking_path(@alien, @booking) %></p>
-<!-- destroy alien -->
+
+
