@@ -1,5 +1,6 @@
 
 <div class="container-show">
+
   <div class="row justify-content-center">
     <div class= "col-6">
       <div class="card-show">
@@ -14,9 +15,19 @@
             <% else %>
             <%= image_tag "alien.png", alt: "Placeholder image", height: 300, width: 300, crop: :fill  %>
             <% end %></li>
+
+    <ul><p>Rating: <% @alien.rating.to_i.times do  %>
+      <span class="fas fa-star"></span>
+    <% end %>
+    <% (5 - @alien.rating.to_i).times do  %>
+      <span class="far fa-star"></span>
+    <% end %>
+    </p>
+  </ul>
+
         </ul>
         <ul class ="list-crud ">
-          
+
         <%= link_to_if current_user.id == @alien.user_id, "Remove Alien",
                   alien_path(@alien),
                   method: :delete,
@@ -33,7 +44,7 @@
   </div>
 </div>
 
- 
+
 
 
 
