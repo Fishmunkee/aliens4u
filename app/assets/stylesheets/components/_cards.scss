@@ -19,10 +19,12 @@
 // }
 
 .cards {
+  margin-top: 90px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-gap: 50px;
+  padding: 10px;
 }
 
 .card {
@@ -36,7 +38,42 @@
   background: rgba(50, 50, 50, .5);
   padding: .5rem;
   border: 2px solid #eeeeee;
+}
 
+.create-card{
+  display: flex;
+  align-content: flex-end;
+  color: $alien;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 2px 2px 25px violet;
+  height: 250px;
+  background: rgba(50, 50, 50, .5);
+  padding: .5rem;
+  border: 2px solid #eeeeee;
+
+  h3{
+    text-align: center;
+    color: $alien;
+  }
+}
+
+  .card-show {
+  justify-content: center;
+  position: relative;
+  color: $alien;
+  border-radius: 5px;
+  box-shadow: 2px 2px 25px violet;
+  height: 480px;
+  background: rgba(50, 50, 50, .5);
+  border: 2px solid #eeeeee;
+  padding: 10px;
+  }
+
+.list-inline{
+  margin-top:auto;
+  margin-bottom:auto;
+  text-align:center;
 }
 
 .booking-cards {
@@ -70,6 +107,23 @@
   padding-left: 160px;
   color: white;
 }
+
+.list-crud {
+  display: flex;
+  align-self: flex-end;
+  width: 400px;
+  list-style: none;
+  margin: auto;
+  justify-content: center;
+  padding-left: 0;
+
+  li{
+    display: inline-block;
+    padding: 0px 20px;
+
+  }
+}
+
 
 h3 {
   font-family: 'Big Shoulders Display', cursive;
