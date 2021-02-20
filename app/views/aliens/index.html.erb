@@ -6,6 +6,14 @@
           <h3>Name: <%= alien.name %></h3>
           <h3>Species: <%= alien.species %></h3>
           <h3>Planet of Origin: <%= alien.planet %></h3>
+          <h3>Rating:
+          <% alien.rating.to_i.times do  %>
+          <span class="fas fa-star"></span>
+          <% end %>
+          <% (5 - alien.rating.to_i).times do  %>
+            <span class="far fa-star"></span>
+          <% end %>
+        </h3>
         </div>
       <% end %>
     <% end %>

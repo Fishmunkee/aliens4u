@@ -10,7 +10,10 @@
     <% end %>
 
     <p>Rating: <% @alien.rating.to_i.times do  %>
-      *
+      <span class="fas fa-star"></span>
+    <% end %>
+    <% (5 - @alien.rating.to_i).times do  %>
+      <span class="far fa-star"></span>
     <% end %>
     </p>
   <br>
@@ -19,7 +22,7 @@
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
 
-                  <p class="glyphicon glyphicon-star"></p>
+
 
 </div>
 

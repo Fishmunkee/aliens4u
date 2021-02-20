@@ -2,11 +2,26 @@ class AliensController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   def index
     @aliens = Alien.all
+    @aliens.each do |alien|
+      @bookings = Booking.where("alien_id = ?", "#{alien.id}")
+      if !@bookings.nil? && @bookings.size > 0
+        average = @bookings.sum(&:rating) / @bookings.length
+        alien.rating = average
+      end
+      alien.rating = 2
+    end
   end
 
   def search
-    puts "I'm working"
     @aliens = Alien.where("name ILIKE ?", "%#{params[:q]}%")
+    @aliens.each do |alien|
+      @bookings = Booking.where("alien_id = ?", "#{alien.id}")
+      if !@bookings.nil? && @bookings.size > 0
+        average = @bookings.sum(&:rating) / @bookings.length
+        alien.rating = average
+      end
+      alien.rating = 4
+    end
   end
 
   def new
@@ -49,6 +64,7 @@ class AliensController < ApplicationController
       average = @bookings.sum(&:rating) / @bookings.length
       @alien.rating = average
     end
+    @alien.rating = 3
   end
 
   def destroy
