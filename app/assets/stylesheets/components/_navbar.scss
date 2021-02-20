@@ -2,6 +2,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $alien;
+  padding: 0px;
 }
 
 .fixed-top{
@@ -16,4 +17,15 @@
   width: 40px;
 }
 
+.alien4u-nav {
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 50px;
+  color: $dark;
+  text-shadow: 1px 1px 1px violet;
+}
+
+
+.new_alien_nav {
+  align-self: left;
+}
 

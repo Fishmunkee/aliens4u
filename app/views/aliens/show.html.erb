@@ -26,6 +26,7 @@
   </ul>
 
         </ul>
+
         <ul class ="list-crud ">
 
           <% if current_user.id == @alien.user_id %>
@@ -39,6 +40,7 @@
         <li><%= link_to "Edit", edit_alien_path(@alien) %></li>
 
         <% end %>
+
         </ul>
       </div>
       <div class ="d-flex justify-content-center">
