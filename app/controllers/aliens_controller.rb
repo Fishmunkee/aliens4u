@@ -3,24 +3,22 @@ class AliensController < ApplicationController
   def index
     @aliens = Alien.all
     @aliens.each do |alien|
-      @bookings = Booking.where("alien_id = ?", "#{alien.id}")
-      if !@bookings.nil? && @bookings.size > 0
-        average = @bookings.sum(&:rating) / @bookings.length
+      bookings = Booking.where("alien_id = ?", "#{alien.id}")
+      if !bookings.nil? && bookings.size > 0
+        average = bookings.sum(:rating) / bookings.length
         alien.rating = average
       end
-      alien.rating = 2
     end
   end
 
   def search
     @aliens = Alien.where("name ILIKE ?", "%#{params[:q]}%")
     @aliens.each do |alien|
-      @bookings = Booking.where("alien_id = ?", "#{alien.id}")
-      if !@bookings.nil? && @bookings.size > 0
-        average = @bookings.sum(&:rating) / @bookings.length
+      bookings = Booking.where("alien_id = ?", "#{alien.id}")
+      if !bookings.nil? && bookings.size > 0
+        average = bookings.sum(:rating) / bookings.length
         alien.rating = average
       end
-      alien.rating = 4
     end
   end
 
@@ -61,10 +59,9 @@ class AliensController < ApplicationController
     @alien = Alien.find(params[:id])
     @bookings = Booking.where("alien_id = ?", "#{@alien.id}")
     if !@bookings.nil? && @bookings.size > 0
-      average = @bookings.sum(&:rating) / @bookings.length
+      average = @bookings.sum(:rating) / @bookings.length
       @alien.rating = average
     end
-    @alien.rating = 3
   end
 
   def destroy

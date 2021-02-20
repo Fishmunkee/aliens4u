@@ -52,7 +52,7 @@ class BookingsController < ApplicationController
   def update
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
-    else 
+    else
       render action: :edit
     end
   end
@@ -64,7 +64,7 @@ class BookingsController < ApplicationController
 
   def rating
     if current_user == @booking.user
-      @booking.rating = :rating
+      @booking.rating = params[:rating]
       @booking.save
       redirect_to booking_path(@booking)
     end

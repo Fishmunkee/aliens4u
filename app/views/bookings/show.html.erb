@@ -1,8 +1,24 @@
 <div class="container">
-  <h1>Your new booking</h1>
+  <h1>Your Booking</h1>
   <div class="cards">
     <div class="card">
         <p>Start Date: <%= @booking.appointment_start_date %></p>
+
+        <p>Your rating:</p>
+        <p>
+          <% @booking.rating.to_i.times do |i|  %>
+            <%= link_to rating_bookings_path(@booking, i+1), method: :post do %>
+              <span class="fas fa-star"></span>
+            <% end %>
+          <% end %>
+
+          <% (5 - @booking.rating.to_i).times do |i| %>
+            <%= link_to rating_bookings_path(@booking, i + 1 + @booking.rating), method: :post  do %>
+              <span class="far fa-star"></span>
+            <% end %>
+          <% end %>
+        </p>
+
          <%= link_to "Cancel booking", booking_path(@booking),
          method: :delete,
          data: { confirm: "Are you sure?" }%>
