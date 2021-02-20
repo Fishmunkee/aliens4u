@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :edit, :update, :destroy]
+  before_action :find_booking, only: [:show, :edit, :update, :destroy, :rating]
   before_action :authenticate_user!
   def new
     @booking = Booking.new
@@ -34,6 +34,14 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     redirect_to bookings_path
+  end
+
+  def rating
+    if current_user == @booking.user
+      @booking.rating = :rating
+      @booking.save
+      redirect_to booking_path(@booking)
+    end
   end
 
   private
