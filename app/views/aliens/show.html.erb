@@ -14,7 +14,7 @@
     <% end %>
     </p>
   <br>
-  <%= link_to "Remove Alien",
+  <%= link_to_if current_user.id == @alien.user_id, "Remove Alien",
                   alien_path(@alien),
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
@@ -23,7 +23,7 @@
 
 </div>
 
-<%= link_to "Edit", edit_alien_path(@alien) %>
+<%= link_to_if current_user.id == @alien.user_id, "Edit", edit_alien_path(@alien) %>
 
 <hr>
 
